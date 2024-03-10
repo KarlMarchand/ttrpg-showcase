@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dynamic Image Display</title>
+		<link rel="stylesheet" href="image_presenter.css" />
+	</head>
+	<body>
+		<div class="video-background">
+			<video playsinline autoplay muted loop id="backgroundVideo">
+				<source src="./Videos/blue-fog.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		<div id="imageContainer">
+			<img id="displayedImage" src="" alt="No image loaded" />
+		</div>
+		<button id="updateButton">Update Image</button>
+		<div id="popupForm">
+			<input type="text" id="imageUrlInput" placeholder="Enter Image URL" />
+			<input id="submitUrl" type="submit" onclick="updateImageURL()" value="Update" />
+		</div>
+		<script src="image_presenter.js" defer></script>
+	</body>
+</html>

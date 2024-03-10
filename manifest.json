@@ -1,0 +1,25 @@
+{
+	"manifest_version": 3,
+	"name": "Image URL Setter",
+	"version": "1.0",
+	"permissions": ["storage", "activeTab", "tabs", "http://127.0.0.1:5500/*"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://app.kanka.io/*"],
+			"js": ["content-kanka.js"]
+		},
+		{
+			"matches": ["http://127.0.0.1:5500/*"],
+			"js": ["content-local.js"]
+		}
+	],
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"512": "images/icon512.png"
+		}
+	}
+}
