@@ -3,20 +3,35 @@ document.addEventListener("DOMContentLoaded", function () {
 	const updateButton = document.getElementById("updateButton");
 	const popupForm = document.getElementById("popupForm");
 	const imageUrlInput = document.getElementById("imageUrlInput");
+	const nameContainer = document.getElementById("name");
 	let currentImageUrl = localStorage.getItem("currentImageUrl") || "";
 	let lastLoadedImageUrl = "";
+	let lastLoadedImageName = "";
 
 	function updateImage() {
 		const newImageUrl = localStorage.getItem("currentImageUrl");
-		if (newImageUrl && newImageUrl !== lastLoadedImageUrl) {
+		const newName = localStorage.getItem("EntityName");
+		if ((newImageUrl && newImageUrl !== lastLoadedImageUrl) || (newName && newName !== lastLoadedImageName)) {
 			lastLoadedImageUrl = newImageUrl;
+			lastLoadedImageName = newName;
 			displayedImage.onload = () => {
-				displayedImage.style.opacity = 1; // Fade in when loaded
+				// Fade in when loaded
+				displayedImage.style.opacity = 1;
+				nameContainer.style.opacity = 1;
 			};
-			displayedImage.style.opacity = 0; // Fade out before loading new image
+			// Fade out before loading new image
+			displayedImage.style.opacity = 0;
+			nameContainer.style.opacity = 0;
 			setTimeout(() => {
 				displayedImage.src = newImageUrl;
-				displayedImage.alt = "Displayed Image";
+				displayedImage.alt = newName;
+				const namedParts = newName.toString().toUpperCase().split(" ");
+				namedParts.forEach((part) => {
+					let nameSegment = document.createElement("div");
+					nameSegment.textContent = part;
+					nameSegment.style.textAlign = "center";
+					nameContainer.appendChild(nameSegment);
+				});
 			}, 1000);
 		}
 	}
@@ -49,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (newUrl !== currentImageUrl) {
 			currentImageUrl = newUrl;
 			localStorage.setItem("currentImageUrl", newUrl);
+			localStorage.setItem("EntityCategory", "");
+			localStorage.setItem("EntityName", "");
 			updateImage();
 		}
 		togglePopup();
@@ -66,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	updateImage();
 
-	// Poll for changes in local storage every 2 seconds
 	setInterval(updateImage, 2000);
 });
 
@@ -75,5 +91,7 @@ window.addEventListener("message", function (event) {
 	// if (event.origin !== "http://localhost") return;
 	if (event.data.type && event.data.type === "FROM_EXTENSION") {
 		localStorage.setItem("currentImageUrl", event.data.imageUrl);
+		localStorage.setItem("EntityCategory", event.data.EntityCategory);
+		localStorage.setItem("EntityName", event.data.EntityName);
 	}
 });

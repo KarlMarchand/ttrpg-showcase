@@ -6,6 +6,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 				chrome.tabs.sendMessage(tab.id, {
 					action: "displayImageUrl",
 					url: request.url,
+					EntityCategory: request.EntityCategory,
+					EntityName: request.EntityName,
 				});
 			});
 			sendResponse({ status: "success", message: "Image URL updated successfully" });

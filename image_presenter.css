@@ -5,18 +5,18 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #303030;
-	background-image: url(https://static.videezy.com/system/resources/thumbnails/000/049/518/original/200616-WhiteSmokeLoop.jpg);
+	background-color: black;
+	background-image: url(https://cdna.artstation.com/p/assets/images/images/001/330/198/large/pau-minguell-firma-reduida.jpg?1444480652);
 }
 
 #imageContainer {
-	width: 80vw;
-	height: 90vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	margin-right: 5vw;
+	height: 75vh;
+	width: auto;
 	overflow: hidden;
 	position: relative;
+	border-radius: 150px;
+	box-shadow: 3px 5px 30px #35a9ad;
 }
 
 img {
@@ -28,14 +28,37 @@ img {
 	opacity: 0;
 }
 
+img.soft-edge {
+	-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, transparent 100%);
+	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, transparent 100%);
+}
+
+.name-container {
+	margin-left: 5vw;
+	display: flex;
+	height: 75%;
+	align-items: center;
+	justify-content: center;
+}
+
+.name-container > div {
+	transform: translateY(-15vh);
+	font-size: 10vh;
+	color: rgb(255, 255, 255);
+	transition: opacity 1s ease-in-out;
+	opacity: 0;
+	text-wrap: wrap;
+	text-shadow: 3px 5px 30px #35a9ad;
+}
+
 #updateButton {
 	position: fixed;
 	top: 20px;
 	right: 20px;
 	padding: 10px;
 	border: none;
-	border-radius: 5px;
-	background-color: #35a9ad;
+	background-color: #4b4b4b;
+	border-radius: 10px;
 	color: white;
 	cursor: pointer;
 }
@@ -68,17 +91,37 @@ img {
 .video-background {
 	position: fixed;
 	right: 0;
-	bottom: 0;
+	bottom: -1vh;
 	min-width: 100%;
 	min-height: 100%;
 	width: auto;
 	height: auto;
 	z-index: -100;
 	background-size: cover;
+	-webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 15%, transparent 100%);
+	mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 15%, transparent 100%);
 }
 
 video {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+}
+
+.cinzel-decorative-regular {
+	font-family: "Cinzel Decorative", serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.cinzel-decorative-bold {
+	font-family: "Cinzel Decorative", serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.cinzel-decorative-black {
+	font-family: "Cinzel Decorative", serif;
+	font-weight: 900;
+	font-style: normal;
 }

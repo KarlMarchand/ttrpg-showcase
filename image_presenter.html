@@ -5,6 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Dynamic Image Display</title>
 		<link rel="stylesheet" href="image_presenter.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 	</head>
 	<body>
 		<div class="video-background">
@@ -14,9 +24,12 @@
 			</video>
 		</div>
 		<div id="imageContainer">
-			<img id="displayedImage" src="" alt="No image loaded" />
+			<img class="soft-edge" id="displayedImage" src="" alt="No image loaded" />
 		</div>
-		<button id="updateButton">Update Image</button>
+		<div class="name-container cinzel-decorative-bold">
+			<div id="name"></div>
+		</div>
+		<button id="updateButton"><span class="material-symbols-outlined">upload</span></button>
 		<div id="popupForm">
 			<input type="text" id="imageUrlInput" placeholder="Enter Image URL" />
 			<input id="submitUrl" type="submit" onclick="updateImageURL()" value="Update" />

@@ -1,14 +1,19 @@
 document.addEventListener("click", function (event) {
-	let targetElement = event.target.closest("[data-tippy-root] > div > div.tippy-content > div > a:nth-child(1)");
+	const targetElement = event.target.closest("[data-tippy-root] > div > div.tippy-content > div > a:nth-child(1)");
 
 	if (targetElement) {
-		console.log("Kanka is sending the url");
-		let imageUrl = targetElement.getAttribute("href");
+		event.preventDefault();
+		const imageUrl = targetElement.getAttribute("href");
+		const titleSections = document.querySelector("head > title").innerHTML.split(" - ");
+		const category = titleSections[1];
+		const name = titleSections[0];
 		if (imageUrl) {
 			chrome.runtime.sendMessage(
 				{
 					action: "setImageURL",
 					url: imageUrl,
+					EntityCategory: category,
+					EntityName: name,
 				},
 				(response) => {
 					console.log("Response:", response);
