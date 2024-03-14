@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			setTimeout(() => {
 				displayedImage.src = newImageUrl;
 				displayedImage.alt = newName;
+				nameContainer.innerHTML = null;
 				const namedParts = newName.toString().toUpperCase().split(" ");
 				namedParts.forEach((part) => {
 					let nameSegment = document.createElement("div");
