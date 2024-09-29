@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Kanka showcase",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab", "tabs", "http://localhost:5173/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://app.kanka.io/*"],
+      "js": ["content-kanka.js"]
+    },
+    {
+      "matches": ["http://localhost:5173/*"],
+      "js": ["content-local.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "512": "icon512.png"
+    }
+  }
+}
