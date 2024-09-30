@@ -4,11 +4,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     window.postMessage(
       {
         type: "FROM_EXTENSION",
-        imageUrl: request.url,
-        EntityCategory: request.EntityCategory,
-        EntityName: request.EntityName,
+        imageUrl: request.imageUrl,
+        imageTitle: request.imageTitle,
       },
       "http://localhost:5173"
-    ); // Adjust target origin as necessary
+    );
   }
 });

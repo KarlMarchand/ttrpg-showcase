@@ -5,9 +5,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       tabs.forEach(function (tab) {
         chrome.tabs.sendMessage(tab.id, {
           action: "setShowcaseData",
-          url: request.url,
-          EntityCategory: request.EntityCategory,
-          EntityName: request.EntityName,
+          imageUrl: request.imageUrl,
+          imageTitle: request.imageTitle,
         });
       });
       sendResponse({
