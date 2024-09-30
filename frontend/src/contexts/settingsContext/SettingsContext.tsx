@@ -34,7 +34,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
     if (event.origin !== "http://localhost:5173") return;
 
     if (event.data.type && event.data.type === "FROM_EXTENSION") {
-      const { imageUrl, EntityName } = event.data;
+      const { imageUrl, imageTitle } = event.data;
 
       const img = new Image();
       img.src = imageUrl;
@@ -43,7 +43,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
         setSettings((prevSettings) => ({
           ...prevSettings,
           imageUrl: imageUrl,
-          imageTitle: EntityName,
+          imageTitle: imageTitle,
         }));
       };
 

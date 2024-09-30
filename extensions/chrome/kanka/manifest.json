@@ -15,11 +15,5 @@
       "matches": ["http://localhost:5173/*"],
       "js": ["content-local.js"]
     }
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "512": "icon512.png"
-    }
-  }
+  ]
 }
