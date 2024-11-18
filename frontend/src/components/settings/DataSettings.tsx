@@ -1,9 +1,11 @@
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
+import styled from "@mui/material/styles/styled";
 import { useEffect, useState } from "react";
 import { useSettingsContext } from "../../contexts/settingsContext/useSettingsContext";
 
@@ -11,6 +13,15 @@ interface DataSettingsProps {
   open: boolean;
   onClose: () => void;
 }
+
+const StyledDialogTitle = styled(DialogTitle)({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+const StyledDeleteOutlineIcon = styled(DeleteOutlineIcon)({
+  cursor: "pointer",
+});
 
 function DataSettings(props: DataSettingsProps) {
   const { open, onClose } = props;
@@ -37,6 +48,14 @@ function DataSettings(props: DataSettingsProps) {
     onClose();
   };
 
+  const handleClearButtonClick = () => {
+    setSettings({
+      ...settings,
+      imageTitle: "",
+      imageUrl: "",
+    });
+  };
+
   useEffect(() => {
     setImageTitle(settings.imageTitle);
     setImageUrl(settings.imageUrl);
@@ -53,7 +72,10 @@ function DataSettings(props: DataSettingsProps) {
         onSubmit: handleSubmit,
       }}
     >
-      <DialogTitle>Data settings</DialogTitle>
+      <StyledDialogTitle>
+        Data settings
+        <StyledDeleteOutlineIcon onClick={handleClearButtonClick} />
+      </StyledDialogTitle>
       <DialogContent>
         <TextField
           autoFocus

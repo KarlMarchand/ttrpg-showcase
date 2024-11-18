@@ -52,14 +52,12 @@ function Showcase() {
   const [tempSettings, setTempSettings] = useState(settings);
 
   useEffect(() => {
-    if (settings.imageUrl || settings.imageTitle) {
-      setIsVisible(false);
-      setTimeout(() => {
-        setTempSettings(settings);
-        setIsVisible(true);
-      }, 300);
-    }
-  }, [settings.imageUrl, settings.imageTitle, settings]);
+    setIsVisible(false);
+    setTimeout(() => {
+      setTempSettings(settings);
+      setIsVisible(true);
+    }, 300);
+  }, [settings]);
 
   return (
     <ThemeProvider theme={themes[settings.themeName]}>
