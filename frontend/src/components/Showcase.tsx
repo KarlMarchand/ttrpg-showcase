@@ -9,14 +9,10 @@ import Grid from "@mui/material/Grid2";
 import "@fontsource/cinzel-decorative/700.css";
 import { useEffect, useState } from "react";
 
-const StyledImage = styled("img")({
-  borderRadius: 25,
-  maskImage:
-    "linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, transparent 100%)",
-});
-
 const StyledShowcase = styled(Grid)({
+  padding: "0 5vh",
   transition: "opacity 0.3s ease-in",
+  overflow: "hidden",
 
   "&.fade-in": {
     opacity: 1,
@@ -26,12 +22,28 @@ const StyledShowcase = styled(Grid)({
   },
 });
 
-const StyledImageTitle = styled("span")(({ theme }) => ({
+const StyledImage = styled(Grid)({
+  height: "90vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  maskImage:
+    "linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, transparent 100%)",
+
+  img: {
+    borderRadius: 25,
+    maxWidth: "100%",
+    maxHeight: "100%",
+  },
+});
+
+const StyledImageTitle = styled(Grid)(({ theme }) => ({
   fontSize: "10vh",
   fontWeight: "bold",
-  textAlign: "center",
+  lineHeight: 1.2,
+  padding: 50,
   textShadow: `3px 5px 30px ${theme.palette.primary.main}`,
-  maxWidth: 650,
+  textAlign: "center",
 }));
 
 function Showcase() {
@@ -55,14 +67,20 @@ function Showcase() {
       <Settings />
       <StyledShowcase
         container
-        gap={20}
+        gap={0}
         alignItems="center"
         wrap="nowrap"
         className={isVisible ? "fade-in" : "fade-out"}
       >
-        {tempSettings.imageUrl && <StyledImage src={tempSettings.imageUrl} />}
+        {tempSettings.imageUrl && (
+          <StyledImage size={tempSettings.imageTitle ? 6 : 12}>
+            <img src={tempSettings.imageUrl} />
+          </StyledImage>
+        )}
         {tempSettings.imageTitle && (
-          <StyledImageTitle>{tempSettings.imageTitle}</StyledImageTitle>
+          <StyledImageTitle size={6}>
+            {tempSettings.imageTitle}
+          </StyledImageTitle>
         )}
       </StyledShowcase>
       <VideoBackground />
