@@ -10,9 +10,9 @@ You can manually enter your data using the data settings, or use a browser exten
 
 Click through to view install instructions
 
-### Google Chrome
+### Firefox
 
-- [Kanka](/extensions/chrome/kanka/Readme.md)
+- [Kanka](/extensions/firefox/kanka/Readme.md)
 
 ## Themes
 

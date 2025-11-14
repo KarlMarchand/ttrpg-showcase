@@ -50,22 +50,22 @@ function createShowcaseOptions() {
 
 function sendMessage({ showImageTitle = false } = {}) {
   const viewImageLink = document.querySelector(
-    ".entity-header-image .tippy-box a:nth-child(1)"
+      ".entity-header-image .tippy-box a:nth-child(1)"
   );
   const imageUrl = viewImageLink ? viewImageLink.getAttribute("href") : "";
   const imageTitle = document
-    .querySelector("head > title")
-    .innerHTML.split(" - ")[0];
+      .querySelector("head > title")
+      .innerHTML.split(" - ")[0];
 
   chrome.runtime.sendMessage(
-    {
-      action: "setShowcaseData",
-      imageUrl: imageUrl,
-      imageTitle: showImageTitle ? imageTitle : "",
-    },
-    (response) => {
-      console.log("Response:", response);
-    }
+      {
+        action: "setShowcaseData",
+        imageUrl: imageUrl,
+        imageTitle: showImageTitle ? imageTitle : "",
+      },
+      (response) => {
+        console.log("[KANKA] Response from background:", response);
+      }
   );
 }
 

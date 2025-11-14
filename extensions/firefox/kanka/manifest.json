@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Kanka showcase",
+  "version": "1.1",
+  "description": "Send Kanka entity images to a local showcase window.",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://app.kanka.io/*",
+    "*://localhost:5173/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://app.kanka.io/*"],
+      "js": ["content-kanka.js"]
+    },
+    {
+      "matches": ["http://localhost/*"],
+      "js": ["content-local.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "kanka-showcase@example.com"
+    }
+  }
+}
